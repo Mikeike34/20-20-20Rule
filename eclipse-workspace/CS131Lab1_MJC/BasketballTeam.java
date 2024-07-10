@@ -36,12 +36,12 @@ public class BasketballTeam extends SportsTeam
 	
 	public double fieldGoalPercentage()
 	{
-		return fieldGoals/fieldGoalsAttempted;
+		return (double) fieldGoals/fieldGoalsAttempted;
 	}//end fieldGoalPertcentage
 	
 	public double freeThrowPercentage()
 	{
-		return freeThrows/freeThrowsAttempted;
+		return (double) freeThrows/freeThrowsAttempted;
 	}//end freeThrowPercentage
 	
 	public void setStats(int wins, int losses, int fieldGoals, int fieldGoalsAttempted, int freeThrows, int freeThrowsAttempted)
@@ -57,7 +57,7 @@ public class BasketballTeam extends SportsTeam
 
 	@Override
 	public double[] getStats() {
-		double[] Stats = {wins/(wins+losses) , fieldGoals/fieldGoalsAttempted, freeThrows/freeThrowsAttempted};
+		double[] Stats = {getWinPercentage(), fieldGoalPercentage(), freeThrowPercentage()};
 		return Stats;
 	}//end getStats
 
