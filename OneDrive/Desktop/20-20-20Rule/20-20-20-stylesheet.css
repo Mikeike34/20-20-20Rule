@@ -1,0 +1,90 @@
+html{
+    background-color: rgb(34, 33, 33);
+}
+.item1{grid-area: header;
+    /*background-color: 	#faead0;*/
+    margin: auto;
+    align-items: center;
+    
+}
+.item1 #header{
+    margin: 0%;
+}
+.item2{grid-area: timer;
+background-color: #c8976f;
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+grid-column-start: 1;
+grid-column-end: 3;
+
+}
+.item2 #timer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.item3{grid-area: main;
+background-color:azure;
+height: 100%;
+width: 100%;
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+grid-column-start: 4;
+grid-column-end: 4;
+grid-row-start: 2;
+grid-row-end: 6;
+}
+.item3 #message{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   
+}
+
+/*button*/
+.item4{grid-area: footer;
+justify-content: center;
+width: 20%;
+height: 100%;
+margin: auto;
+grid-row-start: 7;
+grid-row-end: 7;
+}
+.item4 #startButton{
+    height: 120%;
+    width: 100%;
+    top: 50%;
+    font-size: 14px;
+    background-color:#d7d094;
+    color:black;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    transition: 0.2s all;
+}
+.item4 #startButton:active{
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*entire grid container*/
+.grid-container{ 
+    display: grid;
+    grid-template-areas: 
+        'header header header header header header header'
+        'timer main main main main main main'
+        'timer main main main main main main'
+        'footer footer footer footer footer footer footer';
+    gap: 20px;
+    background-color:#d2b088;
+    border-top-width: 20px;
+    border-style: solid;
+    border-top-color:#b49571;
+    border-left:transparent; border-right: transparent; border-bottom: transparent;
+    padding-top: 0px; padding-bottom: 25px; padding-left: 45px; padding-right: 45px;
+    width: auto;
+    height: auto;
+}
