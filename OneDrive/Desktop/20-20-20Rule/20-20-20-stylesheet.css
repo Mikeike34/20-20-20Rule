@@ -1,6 +1,35 @@
 html{
     background-color: rgb(34, 33, 33);
 }
+/*Welcome page styles*/
+.grid{
+    display: grid;
+    grid-template-areas: 
+        'welcome welcome welcome'
+        'launch launch launch';
+    gap: 20px;
+    background-color:#d2b088;
+    border-top-width: 20px;
+    border-style: solid;
+    border-top-color:#b49571;
+    border-left:transparent; border-right: transparent; border-bottom: transparent;
+    padding-top: 0px; padding-bottom: 25px; padding-left: 45px; padding-right: 45px;
+    width: auto;
+    height: auto;
+}
+.welcome{grid-area: welcome;
+    display: grid;
+    margin: auto;
+    align-items: center;
+}
+.launch{grid-area: launch;
+    display: grid;
+    margin: auto;
+    align-items: center;
+}
+
+
+/*20-second timer styles below */
 .item1{grid-area: header;
     /*background-color: 	#faead0;*/
     margin: auto;
@@ -72,6 +101,7 @@ grid-row-end: 7;
 
 /*entire grid container*/
 .grid-container{ 
+    visibility:hidden;
     display: grid;
     grid-template-areas: 
         'header header header header header header header'
