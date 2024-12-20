@@ -2,24 +2,15 @@
 
 const prompts = ["Look at something blue!", "Remember,<br>try to look 20 feet away", "Look at your favorite decorative piece", "Look out a window"];
 let check = true;
+const gridContainer = document.getElementById("grid-container");
 
-function timer(){ //runs a 20 second timer while displaying a message via the messageDisplay() function.
-    if(check === true){
-        let counter = 20;
-        check = false;
-        let timer = document.getElementById("timer");
-        messageDisplay();
-        for (let i = 0; i <= 20; i++){
-            setTimeout(() => {timer.innerHTML = counter;
-                console.log(counter);
-                counter--;}, i * 1000);
-        
-        }//end for
-        setTimeout(() => {let endMessage = document.getElementById("message");
-            endMessage.innerHTML = "Great job! <br><br>Continue using your device knowing that<br>you have practiced good eye health!"; check = true;}, 20000);
-    }//end if
-}//end timer
+function workTime(){ //starts a timer for 20 minutes in which user can use their device. After 20 minutes, a 20 second eyebreak screen will generate. 
+    let grid = document.getElementById("grid");
+    grid.style.visibility = "hidden";
+    let sound = new Audio('notificationStart.mp3');
 
+    setTimeout(() => {generateEyeBreak(); sound.play();}, 200000); //after 20 minutes, calls the generateEyeBreak() function and plays a chime to alert user. 
+}//end 20MinuteBreak
 
 
 function messageDisplay(){ //pulls a random string from the prompts[] array and displays it in item3
@@ -28,6 +19,29 @@ function messageDisplay(){ //pulls a random string from the prompts[] array and 
     message.innerHTML = randomPrompt;
     console.log(randomPrompt);
 }//end messageDisplay
+
+
+function timer(){ //runs a 20 second timer while displaying a message via the messageDisplay() function.
+    let counter = 20;
+    let timerDisplay = document.getElementById("timer");
+    let endMessage = document.getElementById("message");
+    if(check === true){
+        check = false;
+        messageDisplay();
+
+        for (let i = 0; i <= 20; i++){
+            setTimeout(() => {timerDisplay.innerHTML = counter;
+                console.log(counter);
+                counter--;}, i * 1000); //sets a timer that equals 1 second per counter value (in this case, 20 second timer)
+        
+        }//end for
+
+        let sound = new Audio('notificationEnd.mp3');
+        setTimeout(() => {endMessage.innerHTML = "Great job! <br><br>Continue using your device knowing that<br>you have practiced good eye health!"; sound.play(); check = true;}, 20000);
+    }//end if
+    
+    setTimeout(() => {newCycle(); counter = 20; timerDisplay.innerHTML = counter; endMessage.innerHTML = "It is time to give your eyes a break. <br><br> Click start when you are ready.";}, 27000);
+}//end timer
 
 
 
@@ -42,7 +56,6 @@ function generateEyeBreak(){ //Creates the elements in the DOM needed for the 20
     launchButton.remove();
 
     //setting the grid-container to visible
-    const gridContainer = document.getElementById("grid-container");
     gridContainer.style.visibility = "visible";
 
     //creating each item for the container and their attributes
@@ -80,9 +93,16 @@ function generateEyeBreak(){ //Creates the elements in the DOM needed for the 20
     gridContainer.appendChild(item3);
     gridContainer.appendChild(item4);
 
-    
-
 }//end generateEyeBreak
+
+
+function newCycle(){//
+
+    let sound = new Audio('notificationStart.mp3');
+    gridContainer.style.visibility = "hidden"; //this screen will be hidden for the duration of the 20 minute device time. 
+    setTimeout(() => {gridContainer.style.visibility = "visible"; sound.play();}, 200000); //In 20 minutes, the 20 second break will be visible again and a chime will play to alert the user.
+
+}//end newCycle
 
 
 

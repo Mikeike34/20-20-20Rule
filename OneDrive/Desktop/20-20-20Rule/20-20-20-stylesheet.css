@@ -3,6 +3,7 @@ html{
 }
 /*Welcome page styles*/
 .grid{
+    visibility: visible;
     display: grid;
     grid-template-areas: 
         'welcome welcome welcome'
